@@ -1,20 +1,22 @@
 import { useState } from 'react';
+import { City } from './components/City';
 import { SearchCity } from './components/SearchCity';
 
 const WeatherApp = () => {
-  const [cities, setCities] = useState(['london']);
+  const [city, setCity] = useState('bogota');
 
   const addNewCity = (newCity) => {
-    if (cities.includes(newCity)) return;
+    console.log(newCity);
+    if (newCity === city) return;
 
-    setCities([newCity, ...cities]);
-    console.log(cities);
+    setCity(newCity);
   };
 
   return (
     <>
       <h1>WeatherApp</h1>
       <SearchCity onNewCity={addNewCity} />
+      <City city={city} />
     </>
   );
 };
